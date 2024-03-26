@@ -10,7 +10,6 @@ import java.util.Random;
 
 public class GamePanel extends JPanel implements ActionListener {
     private static final long serialVersionUID = 1L;
-
     static final int width = 500;
     static final int height = 500;
     static final int unit_size = 20;
@@ -38,10 +37,7 @@ public class GamePanel extends JPanel implements ActionListener {
     }
 
     public void play() {
-        addFood();
-        running = true;
-        timer = new Timer(80, this);
-        timer.start();
+        
     }
 
     @Override
@@ -51,22 +47,7 @@ public class GamePanel extends JPanel implements ActionListener {
     }
 
     public void draw(Graphics g) {
-        if (running) {
-            g.setColor(Color.red);
-            g.fillOval(foodX, foodY, unit_size, unit_size);
-
-            for (int i = 0; i < length; i++) {
-                if (i == 0) {
-                    g.setColor(Color.green);
-                    g.fillRect(x[i], y[i], unit_size, unit_size);
-                } else {
-                    g.setColor(new Color(45, 180, 0));
-                    g.fillRect(x[i], y[i], unit_size, unit_size);
-                }
-            }
-        } else {
-            gameOver(g);
-        }
+        
     }
 
     public void move() {
@@ -92,16 +73,12 @@ public class GamePanel extends JPanel implements ActionListener {
     }
 
     public void addFood() {
-        foodX = random.nextInt((int) (width / unit_size)) * unit_size;
-        foodY = random.nextInt((int) (height / unit_size)) * unit_size;
+        
     }
 
     public void checkFood() {
-        if (x[0] == foodX && y[0] == foodY) {
-            length++;
-            foodEaten++;
-            addFood();
-        }
+        
+        
     }
 
     public void checkCollisions() {
@@ -124,11 +101,7 @@ public class GamePanel extends JPanel implements ActionListener {
     }
 
     public void gameOver(Graphics g) {
-        g.setColor(Color.red);
-        g.setFont(new Font("Ink Free", Font.BOLD, 40));
-        FontMetrics metrics = getFontMetrics(g.getFont());
-        g.drawString("Game Over", (width - metrics.stringWidth("Game Over")) / 2, height / 2);
-        g.drawString("Score: " + foodEaten, (width - metrics.stringWidth("Score: " + foodEaten)) / 2, height / 2 + 50);
+        
     }
 
     @Override
